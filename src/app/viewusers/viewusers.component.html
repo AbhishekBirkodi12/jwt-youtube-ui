@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="mt-5" style="padding: 20px;">
+        <table class="table table-bordered">
+            <thead class="thead">
+                <tr>
+                    <th>Username</th>
+                    <th> FirstName</th>
+                    <th> LastName</th>
+                    <th>password</th>
+                    <th>Update</th>
+
+                </tr>
+            </thead>
+
+            <tbody class="tbody">
+                <tr *ngFor="let user of userDetails">
+                    <td> {{user.userName}}</td>
+                    <td> {{user.userFirstName}}</td>
+                    <td> {{user.userLastName}}</td>
+                    <td> {{user.userPassword}}</td>
+                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="update(user)">Update</button></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update User </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #updateForm="ngForm" (ngSubmit)="updateStudent()">
+
+                    <input type="text" disabled #userName [(ngModel)]="userToUpdate.userName" name=userName id="userName" placeholder="Enter your username" class="form-control mb-3">
+                    <input type="text" #userFirstName [(ngModel)]="userToUpdate.userFirstName" name="userFirstName" id="userFirstName" placeholder="Enter your FirstName" class="form-control mb-3">
+                    <input type="text" #userLastName [(ngModel)]="userToUpdate.userLastName" name="userLastName" id="userLastName" placeholder="Enter your LastName" class="form-control mb-3">
+                    <input type="password" #userPassword [(ngModel)]="userToUpdate.userPassword" id="userPassword" placeholder="Enter your password" class="form-control mb-3">
+
+                    <input type="submit" value="Update" class="btn btn-outline-primary form-control rounded-0">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
